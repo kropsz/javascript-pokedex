@@ -19,14 +19,17 @@ function convertPokemon(pokemon) {
 `
 }
 
+const pokemonList = document.getElementById('pokemonList')
+
 fetch(url)
     .then((response) => response.json())
     .then((jsonBody) => jsonBody.results)
-    .then((pokemonList) => {
+    .then((pokemons) => {
 
-        for (let i = 0; i < pokemonList.length ; i++) {
-            const pokemon = pokemonList[i];
-            console.log(convertPokemon(pokemon)) 
+        for (let i = 0; i < pokemons.length ; i++) {
+            const pokemon = pokemons[i];
+            pokemonList.innerHTML += convertPokemon(pokemon) 
+             
         }
         console.log(pokemonList)})
     .catch((error) => console.error(error))
